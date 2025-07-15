@@ -18,7 +18,9 @@ volcanoTriangleInator(
   left_label_hjust = -Inf,
   right_label_hjust = Inf,
   left_bump = 0,
-  right_bump = 0
+  right_bump = 0,
+  left_bump_vertical = 0,
+  right_bump_vertical = 0
 )
 }
 \arguments{
@@ -49,6 +51,10 @@ volcanoTriangleInator(
 \item{left_bump}{Horizontal adjustment for the left label position (default: 0).}
 
 \item{right_bump}{Horizontal adjustment for the right label position (default: 0).}
+
+\item{left_bump_vertical}{Vertical adjustment for the left label position.}
+
+\item{right_bump_vertical}{Vertical adjustment for the right label position.}
 }
 \value{
 A list of ggplot2 layers to add to a volcano plot.

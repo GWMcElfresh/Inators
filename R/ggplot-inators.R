@@ -15,6 +15,8 @@
 #' @param right_label_hjust Horizontal justification for the right label (default: Inf).
 #' @param left_bump Horizontal adjustment for the left label position (default: 0).
 #' @param right_bump Horizontal adjustment for the right label position (default: 0).
+#' @param left_bump_vertical Vertical adjustment for the left label position.
+#' @param right_bump_vertical Vertical adjustment for the right label position.
 #' @return A list of ggplot2 layers to add to a volcano plot.
 #' @import ggplot2
 #'
@@ -25,9 +27,11 @@ volcanoTriangleInator <- function(df, xmin, xmax, ybase, yheight,
                                     triangle_fill = c("skyblue", "orange"),
                                     triangle_alpha = 0.7, label_size = 5,
                                     left_label_hjust = -Inf, right_label_hjust = Inf,
-                                    left_bump = 0, right_bump = 0) {
+                                    left_bump = 0, right_bump = 0,
+                                    left_bump_vertical = 0, right_bump_vertical = 0) {
   #default imputation if a df is supplied
-  if (is.null(xmin) | is.null(xmax) | is.null(ybase) | is.null(yheight)) {
+  if (is.null(xmin) | is.null(xmax) |
+      is.null(ybase) | is.null(yheight)) {
     ybase <- -1
     yheight <- 1
     xmin <- -max(abs(df$log2FoldChange, na.rm = TRUE))
@@ -46,11 +50,11 @@ volcanoTriangleInator <- function(df, xmin, xmax, ybase, yheight,
   #label positions (at the midpoint of the shortest side)
   left_label_pos <- data.frame(
     x = (xmin + left_bump),
-    y = ybase - 0.1 * yheight
+    y = (ybase + left_bump_vertical) - 0.1 * yheight
   )
   right_label_pos <- data.frame(
     x = (xmax + right_bump) / 2,
-    y = ybase - 0.1 * yheight
+    y = (ybase + right_bump_vertical) - 0.1  * yheight
   )
   list(
     geom_polygon(data = triangle_left, aes(x, y), fill = triangle_fill[1], alpha = triangle_alpha, inherit.aes = FALSE),
