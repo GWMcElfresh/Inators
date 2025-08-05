@@ -20,7 +20,8 @@ volcanoTriangleInator(
   left_bump = 0,
   right_bump = 0,
   left_bump_vertical = 0,
-  right_bump_vertical = 0
+  right_bump_vertical = 0,
+  vertical_flip = FALSE
 )
 }
 \arguments{
@@ -55,6 +56,8 @@ volcanoTriangleInator(
 \item{left_bump_vertical}{Vertical adjustment for the left label position.}
 
 \item{right_bump_vertical}{Vertical adjustment for the right label position.}
+
+\item{vertical_flip}{Logical, if TRUE, flips the triangles onto the Y axis (default: FALSE).}
 }
 \value{
 A list of ggplot2 layers to add to a volcano plot.
