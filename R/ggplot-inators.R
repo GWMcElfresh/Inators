@@ -76,7 +76,7 @@ volcanoTriangleInator <- function(df, xmin, xmax, ybase, yheight,
       y = (ybase + left_bump_vertical) - 0.1 * yheight
     )
     right_label_pos <- data.frame(
-      x = (xmax + right_bump) / 2,
+      x = (xmax + right_bump),
       y = (ybase + right_bump_vertical) - 0.1  * yheight
     )
   }
